@@ -1,0 +1,137 @@
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import java.util.Random;
+
+import java.swing.JButton;
+import java.swing.JFrame;
+import java.swing.JLabel;
+import java.swing.JOptionPane;
+import java.swing.JPanel;
+import java.swing.JPasswordField;
+
+public class SwingLoginPanel {
+  private String password = getPasscode();
+  private JFrame mainframe;
+  private JFrame buttonPanel1;
+  private JFrame buttonPanel2;
+  private JFrame lastPanel;
+  private JButton clearButton;
+  private JPasswordField passwordField = new JPasswordField();
+  private JButton enterButton;
+  String pwd = "";
+  boolean firstTime = true;
+  public SwingLoginPanel() {
+    int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+    shuffleArray(numbers);
+    mainframe = new JFrame("Login");
+    buttonPanel1 = new JPanel();
+    buttonPanel1.setLayout(new GridLayout(1,5));
+    buttonPanel2 = new JPanel();
+    buttonPanel2.setLayout(new GridLayout(1,5));
+    passwordField = new JPasswordField();
+    passwordField.setEchoChar((char) 0);
+    passwordField.show(true);
+    passwordField.setText("Enter Password");
+    passwordField.addMouseListener(new MouseListener() {
+      @Override
+      public void mouseReleased(MouseEvent e) {
+      }
+      @Override
+      public void mousePressed(MouseEvent e) {
+      }
+      @Override
+      public void mouseExited(MouseEvent e) {
+      }
+      @Override
+      public void mouseEntered(MouseEvent e) {
+      }
+      @Override
+      public void mouseClicked(MouseEvent e) {
+        if(firstTime) {
+        passwordField.setText("");
+        passwordField.setEchoChar('*');
+        firstTime = false;
+        }
+      }
+    });
+    enterButton = new JButton("Enter");
+    enterButton.addActionListener(new ActionListener() {
+      @override
+      public void actionPerformed(ActionEvent e) {
+        if(passwordField.getText().equals(password)) {
+          NextPage = new NextPage();
+          page.setVisible(true);
+          JLabel label = new JLabel("Yash Pulsay😎");
+          page.getContentPane().add(label);
+        ]
+        else {
+          JOptionPane.showMessageDialog(mainframe,"Wrong Password");
+          System.out.Println("Wrong Password");
+        }
+      }
+    });
+    for(int i = 0;i<numbers.length;i++) {
+      if(i<5) {
+      JButton button = new JButton(""+numbers[i]);
+      button.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          pwd = pwd+button.getText();
+          passwordField.setText(pwd);
+        }
+      });
+      buttonPanel1.add(button);
+    }
+    else {
+      JButton = new Jbutton(""+numbers[i]);
+      button.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+           pwd = pwd+button.getText();
+           passwordField.setText(pwd);
+         }
+       });
+       buttonPanel2.add(button);
+     }
+   }
+   lastPanel = new JPanel();
+   lastPanel.add(clearButton);
+   lastPanel.add(passswordField);
+   lastPanel.add(enterButton);
+   mainframe.setLayout(new GridLayout(3,1));
+   mainframe.add(buttonPanel1);
+   mainframe.add(buttonPanel2);
+   mainframe.add(lastPanel);
+   mainframe.setVisible(true);
+   mainframe.setDefaultCloseOperation(JFrame.EXIT-ON_CLOSE);
+   mainframe.setLocationRelativeTo(null);
+//   mainframe.pack();
+    Dimension dim = toolkit.getDefaultToolkit().getScreenSize();
+    mainframe.setBounds(dim.width/2-mainframe.getSize().width/2,dim.height/2-mainframe.getSize().height/2, 350,164);
+//   System.out.println(mainFrame,getHeight());
+//   System.out.println(mainFrame,getWidth());
+}
+public static void main(Sttring args[]) {
+  new SwingLoginPanel();
+}
+public String getPasscode() {
+  String passcode4digit = "1234";
+  return passcode4digit;
+}
+public void start app() {
+  System.out.println("Application Started");
+}
+public void shuffleArray(int[] ar) {
+  Random rnd = new Random();
+  for(int i = ar.length-1;i>0;i--) {
+    int index = rnd.nextInt(i + 1);
+    ar[index] = ar[i];
+    ar[i] = a;
+    }
+  }
+}
